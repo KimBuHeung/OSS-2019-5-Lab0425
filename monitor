@@ -4,13 +4,20 @@ prev=a
 
 while ((1))
 do
-	if [[ -e log.txt ]]
-	then
-		cur=$( tail -n 1 log.txt )
-		if [[ $cur != $prev ]] 
-		then
-			echo $cur
-			prev=$cur
-		fi
-	fi
+        if [[ -e log.txt ]]
+        then
+                cur=$( tail -n 1 log.txt )
+                if [[ $cur != $prev ]];
+                then
+                        if [[ $cur == "I watched Avengers: Endgame." ]];
+                        then
+                                echo "Spoiler Alert!"
+                                prev=$cur
+                        else
+                                echo $cur
+                                prev=$cur
+                        fi
+                fi
+        fi
 done
+
